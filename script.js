@@ -5,9 +5,10 @@ var totalBuildings = 0;
 var totalUpgrades = 0;
 var totalClicks = 0;
 var totalMPS = 0;
+var firstGame = true;
 
 //Other vars.
-var MoneyForThisRound = 0;
+var MoneyForThisRound = 000000;
 var MoneyPerSecondForThisRound = 0;
 var clicksForThisRound = 0;
 var buildingsForThisRound = 0;
@@ -382,13 +383,67 @@ function addShowList() {
     checkHoverButt('#nuke-2-4',nuke,1818181818181,nukeMPS,100,2);
 }
 
+function supportsLocalStorage() {
+    if(typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+        //console.log("works");
+        return true;
+} else {
+    // Sorry! No Web Storage support..
+    return false;
+}
+}
+function saveGameState() {
+    if (!supportsLocalStorage()) { 
+        return false; 
+    }
+    
+    localStorage["catclick.firstgame"] = false ;
+    localStorage["catclick.totalmoney"] = totalMoney;
+    console.log("saved");
+    return true;
+}
+
+function resumeGame() {
+    if (!supportsLocalStorage()) { 
+        return false; 
+    }
+    console.log("game is resumed");
+    totalMoney = parseFloat(localStorage["catclick.totalmoney"]);
+    return true;
+}
+
+//check if this is the first time playing this game
+function isFirstGame() {
+    if (!supportsLocalStorage()) {
+        return false;
+    }
+    if(localStorage["catclick.firstgame"] === "false"){
+        console.log("This is not first game");
+        firstGame = false;
+    }
+    else {
+        console.log("This is first game");
+    }
+    return true;
+}
+    
+
 function init() {
     clickControl();
     addBuyList();
     addShowList();
     setInterval(function () {totalAutoMoneyPerSecond()}, 100);
+    setInterval(function () {checkTime()}, 60000); //this is used to record total played time
+    //checkSupportStorage();
+    if(isFirstGame()) {
+        setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
+    }
+    else {
+        resumeGame();
+        setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
+    }
     
-    setInterval(function () {checkTime}, 60000); //this is used to record total played time
 }
 
 $(document).ready(init());
