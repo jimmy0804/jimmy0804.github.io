@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title class="title">Cat Clicker</title>
+    
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <!-- custom css -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <!-- fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-inner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <h3 class="header">Cat Clicker</h3>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav header-list">
+            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#how-to-play-modal">
+  How to Play </button></li>
+            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stats-modal">
+  Statistics </button></li>
+            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact-modal">
+  Contact Me </button></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <!-- Modal for how to play -->
+<div class="modal fade" id="how-to-play-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">How to play</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+        <!-- Modal for stats -->
+<div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">Statistics</h2>
+        <h6>View records of what you have done</h6>
+      </div>
+      <div class="modal-body">
+         <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 current">
+                    <h3>CURRENT</h3>
+                    <h5>Total Buildings -------------------------------------- <span class="current-building">0</span></h5>
+                    <h5>Total Upgrades  ------------------------------------- <span class="current-upgrade">0</span></h5>
+                    <h5>Total Clicks ------------------------------------------ <span class="current-click">0</span></h5>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 cumulative">
+                    <h3>CUMULATIVE                  </h3>
+                    <h5>Total buildings -------------------------------------- <span class="cumulative-building">0</span></h5>
+                    <h5>Total Upgrades  ------------------------------------- <span class="cumulative-upgrade">0</span></h5>
+                    <h5>Total Gold -------------------------------------------- <span class="cumulative-gold">0</span></h5>
+                    <h5>Maximum Gold Per Second --------------------- <span class="cumulative-mps">0</span></h5>
+                    <!--<h5>Total Play time (in minutes)-------------------------------------- <span class="cumulative-play-time">0</span></h5> -->
+                    <h5>Total Clicks -------------------------------------- <span class="cumulative-click">0</span></h5>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-12">
+                </div>
+            </div>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+        <!-- Modal for contact me -->
+<div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact me</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+    
+    <!-- main content -->
+    <div class="container-fluid whole">
+        <div class="row">
+            <div class="col-sm-3 pre-scrollable show-room">
+                <input class="butt" id="click-2" type="button" value="C" data-toggle="tooltip" data-placement="bottom" title="G Per Clicks X 3 $1000">
+                <input class="butt" id="cheese-2" type="button" value="Ch" data-toggle="tooltip" data-placement="bottom" title="Cheese GPS X 2 $10000 Req: 1 cheese">
+                <input class="butt" id="mouse-trap-2" type="button" value="M" data-toggle="tooltip" data-placement="bottom" title="Mouse Trap GPS X 2 $50000 Req: 1 Mouse Trap">
+                 <input class="butt" id="trash-can-2" type="button" value="T" data-toggle="tooltip" data-placement="bottom" title="Trash Can GPS X 2 $300000 Req: 1 Trash Can">
+                 <input class="butt" id="posion-2" type="button" value="P" data-toggle="tooltip" data-placement="bottom" title="Poison GPS X 2 $1000000 Req: 1 Posion">
+                 <input class="butt" id="machine-gun-2" type="button" value="Ma" data-toggle="tooltip" data-placement="bottom" title="Machine Gun GPS X 2 $4000000 Req: 1 Machine Gun">
+                <input class="butt" id="tank-2" type="button" value="Ta" data-toggle="tooltip" data-placement="bottom" title="Tank GPS X 2 $20000000 Req: 1 Tank">
+                <input class="butt" id="nuke-2" type="button" value="N" data-toggle="tooltip" data-placement="bottom" title="Nuke Bomb GPS X 3 $818181818 Req: 1 Nuke Bomb">
+                
+                  <input class="butt" id="click-2-2" type="button" value="C2" data-toggle="tooltip" data-placement="bottom" title="G Per Clicks X 3 $1000">
+                <input class="butt" id="cheese-2-2" type="button" value="Ch2" data-toggle="tooltip" data-placement="bottom" title="Cheese GPS X 2 $100000 Req: 10 Cheeses">
+                <input class="butt" id="mouse-trap-2-2" type="button" value="M2" data-toggle="tooltip" data-placement="bottom" title="Mouse Trap GPS X 2 $500000 Req: 10 Mouse Traps">
+                 <input class="butt" id="trash-can-2-2" type="button" value="T2" data-toggle="tooltip" data-placement="bottom" title="Trash Can GPS X 2 $3000000 Req: 10 Trash Cans">
+                 <input class="butt" id="posion-2-2" type="button" value="P2" data-toggle="tooltip" data-placement="bottom" title="Poison GPS X 2 $10000000 Req: 10 Posions">
+                 <input class="butt" id="machine-gun-2-2" type="button" value="Ma2" data-toggle="tooltip" data-placement="bottom" title="Machine Gun GPS X 2 $40000000 Req: 10 Machine Guns">
+                <input class="butt" id="tank-2-2" type="button" value="Ta2" data-toggle="tooltip" data-placement="bottom" title="Tank GPS X 2 $20000000 Req: 10 Tanks">
+                <input class="butt" id="nuke-2-2" type="button" value="N2" data-toggle="tooltip" data-placement="bottom" title="Nuke Bomb GPS X 3 $1818181818 Req: 10 Nuke Bombs ">
+                
+                    <input class="butt" id="click-2-2-3" type="button" value="C3" data-toggle="tooltip" data-placement="bottom" title="G Per Clicks X 3 $1000">
+                <input class="butt" id="cheese-2-2-3" type="button" value="Ch3" data-toggle="tooltip" data-placement="bottom" title="Cheese GPS X 2 $500000 Req: 50 Cheeses">
+                <input class="butt" id="mouse-trap-2-2-3" type="button" value="M3" data-toggle="tooltip" data-placement="bottom" title="Mouse Trap GPS X 2 $2500000 Req: 50 Mouse Traps">
+                 <input class="butt" id="trash-can-2-2-3" type="button" value="T3" data-toggle="tooltip" data-placement="bottom" title="Trash Can GPS X 2 $15000000 Req: 50 Trash Cans">
+                 <input class="butt" id="posion-2-2-3" type="button" value="P3" data-toggle="tooltip" data-placement="bottom" title="Poison GPS X 2 $50000000 Req: 50 Posions">
+                 <input class="butt" id="machine-gun-2-2-3" type="button" value="Ma3" data-toggle="tooltip" data-placement="bottom" title="Machine Gun GPS X 2 $200000000 Req: 50 Machine Guns">
+                <input class="butt" id="tank-2-2-3" type="button" value="Ta3" data-toggle="tooltip" data-placement="bottom" title="Tank GPS X 2 $100000000 Req: 50 Tanks">
+                <input class="butt" id="nuke-2-2-3" type="button" value="N3" data-toggle="tooltip" data-placement="bottom" title="Nuke Bomb GPS X 3 $9090909090 Req: 50 Nuke Bombs ">
+                
+                <input class="butt" id="click-2-4" type="button" value="C4" data-toggle="tooltip" data-placement="bottom" title="G Per Clicks X 3 $1000">
+                <input class="butt" id="cheese-2-4" type="button" value="Ch4" data-toggle="tooltip" data-placement="bottom" title="Cheese GPS X 2 $100000000 Req: 100 Cheeses">
+                <input class="butt" id="mouse-trap-2-4" type="button" value="M4" data-toggle="tooltip" data-placement="bottom" title="Mouse Trap GPS X 2 $500000000 Req: 100 Mouse Traps">
+                 <input class="butt" id="trash-can-2-4" type="button" value="T4" data-toggle="tooltip" data-placement="bottom" title="Trash Can GPS X 2 $3000000000 Req: 100 Trash Cans">
+                 <input class="butt" id="posion-2-4" type="button" value="P4" data-toggle="tooltip" data-placement="bottom" title="Poison GPS X 2 $10000000000 Req: 100 Posions">
+                 <input class="butt" id="machine-gun-2-4" type="button" value="Ma4" data-toggle="tooltip" data-placement="bottom" title="Machine Gun GPS X 2 $40000000000 Req: 100 Machine Guns">
+                <input class="butt" id="tank-2-4" type="button" value="Ta4" data-toggle="tooltip" data-placement="bottom" title="Tank GPS X 2 $20000000000 Req: 100 Tanks">
+                <input class="butt" id="nuke-2-4" type="button" value="N4" data-toggle="tooltip" data-placement="bottom" title="Nuke Bomb GPS X 3 $1818181818181 Req: 100 Nuke Bombs ">
+                
+            
+            
+                
+            </div>
+            <div class="col-sm-6 main">
+                <div class="panel panel-default">
+                  <div class="panel-body infor">
+                    G: <span class="money">0</span> <br>  Total GPS: <span class="money-sec">0</span> /s
+                  </div> 
+                </div>
+                
+                    <div class="cat">
+                    <img src="pics/cat_for_click.jpg" class="img-responsive center-block img-circle cat-click">
+                </div>
+            </div>
+            <div class="col-sm-3 pre-scrollable buy-room">
+                <ul class="list-group">
+                     <li class="list-group-item" id="cheese">
+                      <img id="buy-room" src="pics/cheese.png">
+                      <div id="buy-room-text">
+                          <p> <span class="cheese-number">0</span> Cheese</p>
+                          <p> G: <span class="cheese-cost">0</span></p>
+                          <p> GPS: <span class="cheese-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                  <li class="list-group-item" id="mouse-trap">
+                      <img id="buy-room" src="pics/mouse-trap.png">
+                      <div id="buy-room-text">
+                          <p> <span class="mouse-trap-number">0</span> Mouse Trap</p>
+                          <p> G: <span class="mouse-trap-cost">0</span></p>
+                          <p> GPS: <span class="mouse-trap-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                
+                    
+                    <li class="list-group-item" id="trash-can">
+                      <img id="buy-room" src="pics/trash-can.png">
+                      <div id="buy-room-text">
+                          <p> <span class="trash-can-number">0</span> Trash Can</p>
+                          <p> G: <span class="trash-can-cost">0</span></p>
+                          <p> GPS: <span class="trash-can-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                    <li class="list-group-item" id="poison">
+                      <img id="buy-room" src="pics/Poison.png">
+                      <div id="buy-room-text">
+                          <p> <span class="poison-number">0</span> Poison</p>
+                          <p> G: <span class="poison-cost">0</span></p>
+                          <p> GPS: <span class="poison-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                    <li class="list-group-item" id="machine-gun">
+                      <img id="buy-room" src="pics/machine-gun.png">
+                      <div id="buy-room-text">
+                          <p> <span class="machine-gun-number">0</span> Machine Gun</p>
+                          <p> G: <span class="machine-gun-cost">0</span></p>
+                          <p> GPS: <span class="machine-gun-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                    
+                    <li class="list-group-item" id="tank">
+                      <img id="buy-room" src="pics/tank.png">
+                      <div id="buy-room-text">
+                          <p> <span class="tank-number">0</span> Tank</p>
+                          <p> G: <span class="tank-cost">0</span></p>
+                          <p> GPS: <span class="tank-second">0</span>/s</p>
+                      </div>
+                  </li>
+                  
+                    <li class="list-group-item" id="nuke">
+                      <img id="buy-room" src="pics/nuke.png">
+                      <div id="buy-room-text">
+                          <p> <span class="nuke-number">0</span> Nuke Bomb</p>
+                          <p> G: <span class="nuke-cost">0</span></p>
+                          <p> GPS: <span class="nuke-second">0</span>/s</p>
+                      </div>
+                  </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Made by Jimmy</p>
+      </div>
+    </footer>
+    
+
+    
+    <!--chat room api-->
+    <!--<script>window.scrollback = {"room":"cat-clicker","form":"toast","minimize":false};(function(d,s,h,e){e=d.createElement(s);e.async=1;e.src=(location.protocol === "https:" ? "https:" : "http:") + "//scrollback.io/client.min.js";d.getElementsByTagName(s)[0].parentNode.appendChild(e);}(document,"script"));</script>-->
+    
+<!-- bootstrap script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--custom javaScript -->
+<script src="script.js"></script>
+<script type="text/javascript">
+        function killCopy(e){
+            return false
+        }
+        function reEnable(){
+            return true
+        }
+        document.onselectstart=new Function("return false")
+        if (window.sidebar){
+            document.onmousedown=killCopy
+            document.onclick=reEnable}
+    </script>
+    
+</body>
+</html>
