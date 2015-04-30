@@ -7,7 +7,7 @@ var totalClicks = 0;
 var totalMPS = 0;
 
 //Other vars.
-var MoneyForThisRound = 5000000;
+var MoneyForThisRound = 0;
 var MoneyPerSecondForThisRound = 0;
 var clicksForThisRound = 0;
 var buildingsForThisRound = 0;
