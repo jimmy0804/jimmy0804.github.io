@@ -481,11 +481,11 @@ function init() {
     setInterval(function () {checkTime()}, 60000); //this is used to record total played time
 
     if(isFirstGame()) {
-        setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
+        setInterval(function() {saveGameState()}, 60000); //the game will save automaticlly every 10 secs
     }
     else {
         resumeGame();
-        setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
+        setInterval(function() {saveGameState()}, 60000); //the game will save automaticlly every 10 secs
     }
     
     saveButton();
