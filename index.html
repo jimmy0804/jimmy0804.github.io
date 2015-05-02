@@ -30,11 +30,11 @@
         <div id="navbar" class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav header-list">
             <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#how-to-play-modal">
-  How to Play </button></li>
+  Settings </button></li>
             <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stats-modal">
   Statistics </button></li>
-            <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact-modal">
-  Contact Me </button></li>
+            <!--<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contact-modal">
+  Contact Me </button></li> -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -46,12 +46,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">How to play</h4>
+        <h4 class="modal-title" id="myModalLabel">Settings</h4>
       </div>
       <div class="modal-body">
-        ...
+          <p>The game will be saved automatically every 60 seconds.</p>
+          <p>You can also save the game manually by clicking save Button.</p>
+            <button type="button" class="btn btn-success save-button">Save</button>
+          <p>Delete the game data</p>
+          <button type="button" class="btn btn-danger delete-data">Delete Data</button>
       </div>
-      
     </div>
   </div>
 </div>
@@ -245,13 +248,14 @@
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Made by Jimmy</p>
+          <div class="save-succ"></div>
       </div>
     </footer>
     
 
     
     <!--chat room api-->
-    <!--<script>window.scrollback = {"room":"cat-clicker","form":"toast","minimize":false};(function(d,s,h,e){e=d.createElement(s);e.async=1;e.src=(location.protocol === "https:" ? "https:" : "http:") + "//scrollback.io/client.min.js";d.getElementsByTagName(s)[0].parentNode.appendChild(e);}(document,"script"));</script>-->
+    <script>window.scrollback = {"room":"cat-clicker","form":"toast","minimize":false};(function(d,s,h,e){e=d.createElement(s);e.async=1;e.src=(location.protocol === "https:" ? "https:" : "http:") + "//scrollback.io/client.min.js";d.getElementsByTagName(s)[0].parentNode.appendChild(e);}(document,"script"));</script>
     
 <!-- bootstrap script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

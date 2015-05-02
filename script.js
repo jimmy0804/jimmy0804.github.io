@@ -299,7 +299,6 @@ function clickBuyListAction (className, objectName, cost, mps, showNumber, showC
 function checkTime () {
     totalPlayedTime += 1;
     playedTime += 1;
-    
 }
 
 /*
@@ -383,23 +382,31 @@ function addShowList() {
     checkHoverButt('#nuke-2-4',nuke,1818181818181,nukeMPS,100,2);
 }
 
+//a function to check if local storage is supported
 function supportsLocalStorage() {
     if(typeof(Storage) !== "undefined") {
-    // Code for localStorage/sessionStorage.
-        //console.log("works");
         return true;
-} else {
-    // Sorry! No Web Storage support..
+    } 
+    else {
+    //No Web Storage support
     return false;
+    }
 }
-}
+
 function saveGameState() {
     if (!supportsLocalStorage()) { 
         return false; 
     }
-    
     localStorage["catclick.firstgame"] = false ;
     localStorage["catclick.totalmoney"] = totalMoney;
+    localStorage["catclick.totalbuildings"] = totalBuildings;
+    localStorage["catclick.totalupgrades"] = totalUpgrades;
+    localStorage["catclick.moneyforthisround"] = MoneyForThisRound;
+    localStorage["catclick.moneypersecondforthisround"] = MoneyPerSecondForThisRound;
+    localStorage["catclick.clickforthisround"] = clicksForThisRound ;
+    localStorage["catclick.buildingsforthisround"] = buildingsForThisRound; 
+    localStorage["catclick.upgradesforthisround"] = upgradesForThisRound;
+    
     console.log("saved");
     return true;
 }
@@ -410,6 +417,14 @@ function resumeGame() {
     }
     console.log("game is resumed");
     totalMoney = parseFloat(localStorage["catclick.totalmoney"]);
+    totalBuildings = parseInt(localStorage["catclick.totalbuildings"]);
+    totalUpgrades = parseInt(localStorage["catclick.totalupgrades"]);
+    MoneyForThisRound = parseInt(localStorage["catclick.moneyforthisround"]);
+    MoneyPerSecondForThisRound = parseInt(localStorage["catclick.moneypersecondforthisround"]);
+    clicksForThisRound = parseInt(localStorage["catclick.clickforthisround"]);
+    buildingsForThisRound = parseInt(localStorage["catclick.buildingsforthisround"]);
+    upgradesForThisRound = parseInt(localStorage["catclick.upgradesforthisround"]);
+
     return true;
 }
 
@@ -421,13 +436,42 @@ function isFirstGame() {
     if(localStorage["catclick.firstgame"] === "false"){
         console.log("This is not first game");
         firstGame = false;
+        return false;
     }
     else {
         console.log("This is first game");
+        return true;
     }
-    return true;
 }
-    
+
+function saveButton() {
+    $('.save-button').click( function() {
+        saveGameState();
+    });
+}
+
+//clear everything
+function deleteDataButton() {
+    $('.delete-data').click( function() {
+        localStorage.clear();
+         totalMoney = 0.00;
+        totalPlayedTime = 0;
+         totalBuildings = 0;
+         totalUpgrades = 0;
+         totalClicks = 0;
+         totalMPS = 0;
+         firstGame = true;
+
+        //Other vars. 
+        MoneyForThisRound = 000000;
+         MoneyPerSecondForThisRound = 0;
+         clicksForThisRound = 0;
+         buildingsForThisRound = 0;
+         upgradesForThisRound = 0;
+         playedTime = 0;
+    });
+}
+
 
 function init() {
     clickControl();
@@ -435,7 +479,7 @@ function init() {
     addShowList();
     setInterval(function () {totalAutoMoneyPerSecond()}, 100);
     setInterval(function () {checkTime()}, 60000); //this is used to record total played time
-    //checkSupportStorage();
+
     if(isFirstGame()) {
         setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
     }
@@ -444,6 +488,8 @@ function init() {
         setInterval(function() {saveGameState()}, 10000); //the game will save automaticlly every 10 secs
     }
     
+    saveButton();
+    deleteDataButton()
 }
 
 $(document).ready(init());
