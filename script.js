@@ -8,7 +8,7 @@ var totalMPS = 0;
 var firstGame = true;
 
 //Other vars.
-var MoneyForThisRound = 000000;
+var MoneyForThisRound = 1000000;
 var MoneyPerSecondForThisRound = 0;
 var clicksForThisRound = 0;
 var buildingsForThisRound = 0;
@@ -42,11 +42,11 @@ $(function () {
 */
 
 //Constructor for buildings object
-var buildings = function (cost, mps,baseMPS,baseCost) {
+var buildings = function (cost, mps) {
     this.cost = cost;
     this.mps = mps;
-    this.baseMPS = baseMPS;
-    this.baseCost = baseCost;
+    this.baseMPS = 0;
+    this.baseCost = 0;
     this.totalBought = 0;
     this.totalMPS = 0;
     
@@ -81,13 +81,8 @@ var buildings = function (cost, mps,baseMPS,baseCost) {
         //then we make the new baseMPS
         this.baseMPS = this.baseMPS * times;
         this.totalMPS = this.totalMPS * times;
-        console.log(this.totalMPS);
-        
         MoneyPerSecondForThisRound += this.totalMPS;
-        
-        
-    }
-       
+    }      
 };
 
 
@@ -265,7 +260,6 @@ function clickBuyListAction (className, objectName, cost, mps, showNumber, showC
     //This will call the checkhover function to check if the user has money to buy this building
     checkHoverBuilding(className,objectName.cost);
     
-
     //Handle click functions
      $(className).click(function () {
                if (MoneyForThisRound >= objectName.cost){  //check if money is enough to buy
@@ -274,6 +268,7 @@ function clickBuyListAction (className, objectName, cost, mps, showNumber, showC
                        objectName.baseCost = cost;
                        objectName.baseMPS = mps;
                    }
+                   
                    objectName.addOneToTotalBought();  //increment 1 to total bought
                    objectName.subtractTotalCost();
                    objectName.addCost();
@@ -281,10 +276,7 @@ function clickBuyListAction (className, objectName, cost, mps, showNumber, showC
                    
                    displayMoney();
                    
-                   /*if(objectName.totalBought > 0){
-                        objectName.addMPS();     //increment mps
-                   }*/
-                   
+                   //updata view
                    showNumber.text(objectName.totalBought);
                    showCost.text(Math.round(objectName.cost));
                    showSecond.text(objectName.baseMPS);
@@ -406,8 +398,59 @@ function saveGameState() {
     localStorage["catclick.clickforthisround"] = clicksForThisRound ;
     localStorage["catclick.buildingsforthisround"] = buildingsForThisRound; 
     localStorage["catclick.upgradesforthisround"] = upgradesForThisRound;
+    localStorage["catclick.totalclicks"] = totalClicks;
+    localStorage["catclick.totalmps"] = totalMPS;
     
-    console.log("saved");
+    //all the building storage
+    localStorage["catclick.cheesenum"] = cheese.totalBought;
+    localStorage["catclick.mousetrapnum"] = mouseTrap.totalBought;
+    localStorage["catclick.trashcannum"] = trashCan.totalBought;
+    localStorage["catclick.poisonnum"] = poison.totalBought;
+    localStorage["catclick.machinegunnum"] = machineGun.totalBought;
+    localStorage["catclick.tanknum"] = tank.totalBought;
+    localStorage["catclick.nukenum"] = nuke.totalBought;
+    
+    localStorage["catclick.cheesecost"] = cheese.cost;
+    localStorage["catclick.mousetrapcost"] = mouseTrap.cost;
+    localStorage["catclick.trashcancost"] = trashCan.cost;
+    localStorage["catclick.poisoncost"] = poison.cost;
+    localStorage["catclick.machineguncost"] = machineGun.cost;
+    localStorage["catclick.tankcost"] = tank.cost;
+    localStorage["catclick.nukecost"] = nuke.cost;
+    
+    localStorage["catclick.cheesemps"] = cheese.mps;
+    localStorage["catclick.mousetrapmps"] = mouseTrap.mps;
+    localStorage["catclick.trashcanmps"] = trashCan.mps;
+    localStorage["catclick.poisonmps"] = poison.mps;
+    localStorage["catclick.machinegunmps"] = machineGun.mps;
+    localStorage["catclick.tankmps"] = tank.mps;
+    localStorage["catclick.nukemps"] = nuke.mps;
+    
+    localStorage["catclick.cheesebasemps"] = cheese.baseMPS;
+    localStorage["catclick.mousetrapbasemps"] = mouseTrap.baseMPS;
+    localStorage["catclick.trashcanbasemps"] = trashCan.baseMPS;
+    localStorage["catclick.poisonbasemps"] = poison.baseMPS;
+    localStorage["catclick.machinegunbasemps"] = machineGun.baseMPS;
+    localStorage["catclick.tankbasemps"] = tank.baseMPS;
+    localStorage["catclick.nukebasemps"] = nuke.baseMPS;
+    
+    localStorage["catclick.cheesebasecost"] = cheese.baseCost;
+    localStorage["catclick.mousetrapbasecost"] = mouseTrap.baseCost;
+    localStorage["catclick.trashcanbasecost"] = trashCan.baseCost;
+    localStorage["catclick.poisonbasecost"] = poison.baseCost;
+    localStorage["catclick.machinegunbasecost"] = machineGun.baseCost;
+    localStorage["catclick.tankbasecost"] = tank.baseCost;
+    localStorage["catclick.nukebasecost"] = nuke.baseCost;
+    
+    localStorage["catclick.cheesetotalmps"] = cheese.totalMPS;
+    localStorage["catclick.mousetraptotalmps"] = mouseTrap.totalMPS;
+    localStorage["catclick.trashcantotalmps"] = trashCan.totalMPS;
+    localStorage["catclick.poisontotalmps"] = poison.totalMPS;
+    localStorage["catclick.machineguntotalmps"] = machineGun.totalMPS;
+    localStorage["catclick.tanktotalmps"] = tank.totalMPS;
+    localStorage["catclick.nuketotalmps"] = nuke.totalMPS;
+    
+    //console.log("saved");
     return true;
 }
 
@@ -415,7 +458,8 @@ function resumeGame() {
     if (!supportsLocalStorage()) { 
         return false; 
     }
-    console.log("game is resumed");
+    
+    //console.log("game is resumed");
     totalMoney = parseFloat(localStorage["catclick.totalmoney"]);
     totalBuildings = parseInt(localStorage["catclick.totalbuildings"]);
     totalUpgrades = parseInt(localStorage["catclick.totalupgrades"]);
@@ -424,7 +468,80 @@ function resumeGame() {
     clicksForThisRound = parseInt(localStorage["catclick.clickforthisround"]);
     buildingsForThisRound = parseInt(localStorage["catclick.buildingsforthisround"]);
     upgradesForThisRound = parseInt(localStorage["catclick.upgradesforthisround"]);
+    totalClicks = parseInt(localStorage["catclick.totalclicks"]);
+    totalMPS = parseInt(localStorage["catclick.totalmps"]);
+    
+    cheese.totalBought = parseInt(localStorage["catclick.cheesenum"]);
+    mouseTrap.totalBought = parseInt(localStorage["catclick.mousetrapnum"]);
+    trashCan.totalBought = parseInt(localStorage["catclick.trashcannum"]);
+    poison.totalBought = parseInt(localStorage["catclick.poisonnum"]);
+    machineGun.totalBought = parseInt(localStorage["catclick.machinegunnum"]);
+    tank.totalBought = parseInt(localStorage["catclick.tanknum"]);
+    nuke.totalBought = parseInt(localStorage["catclick.nukenum"]);
+    
+    cheese.cost = parseInt(localStorage["catclick.cheesecost"]);
+    mouseTrap.cost = parseInt(localStorage["catclick.mousetrapcost"]);
+    trashCan.cost = parseInt(localStorage["catclick.trashcancost"]);
+    poison.cost = parseInt(localStorage["catclick.poisoncost"]);
+    machineGun.cost = parseInt(localStorage["catclick.machineguncost"]);
+    tank.cost = parseInt(localStorage["catclick.tankcost"]);
+    nuke.cost = parseInt(localStorage["catclick.nukecost"]);
+    
+    cheese.mps = parseFloat(localStorage["catclick.cheesemps"]);
+    mouseTrap.mps = parseInt(localStorage["catclick.mousetrapmps"]);
+    trashCan.mps = parseInt(localStorage["catclick.trashcanmps"]);
+    poison.mps = parseInt(localStorage["catclick.poisonmps"]);
+    machineGun.mps = parseInt(localStorage["catclick.machinegunmps"]);
+    tank.mps = parseInt(localStorage["catclick.tankmps"]);
+    nuke.mps = parseInt(localStorage["catclick.nukemps"]);
+    
+    cheese.baseMPS = parseFloat(localStorage["catclick.cheesebasemps"] );
+    mouseTrap.baseMPS = parseInt(localStorage["catclick.mousetrapbasemps"]);
+    trashCan.baseMPS = parseInt(localStorage["catclick.trashcanbasemps"]);
+    poison.baseMPS = parseInt(localStorage["catclick.poisonbasemps"]);
+    machineGun.baseMPS = parseInt(localStorage["catclick.machinegunbasemps"]);
+    tank.baseMPS = parseInt(localStorage["catclick.tankbasemps"]);
+    nuke.baseMPS = parseInt(localStorage["catclick.nukebasemps"]);
+    
+    cheese.baseCost = parseInt(localStorage["catclick.cheesebasecost"]);
+    mouseTrap.baseCost = parseInt(localStorage["catclick.mousetrapbasecost"]);
+    trashCan.baseCost = parseInt(localStorage["catclick.trashcanbasecost"]);
+    poison.baseCost = parseInt(localStorage["catclick.poisonbasecost"]);
+    machineGun.baseCost = parseInt(localStorage["catclick.machinegunbasecost"]);
+    tank.baseCost = parseInt(localStorage["catclick.tankbasecost"]);
+    nuke.baseCost = parseInt(localStorage["catclick.nukebasecost"]);
+    
+    cheese.totalMPS = parseFloat(localStorage["catclick.cheesetotalmps"]);
+    mouseTrap.totalMPS = parseInt(localStorage["catclick.mousetraptotalmps"]);
+    trashCan.totalMPS = parseInt(localStorage["catclick.trashcantotalmps"]);
+    poison.totalMPS = parseInt(localStorage["catclick.poisontotalmps"]);
+    machineGun.totalMPS = parseInt(localStorage["catclick.machineguntotalmps"]);
+    tank.totalMPS = parseInt(localStorage["catclick.tanktotalmps"]);
+    nuke.totalMPS = parseInt(localStorage["catclick.nuketotalmps"]);
 
+     
+        cheeseCost.text(cheese.cost);
+        cheeseMPS.text(cheese.baseMPS);
+        cheeseBought.text(cheese.totalBought);
+        mouseTrapCost.text(mouseTrap.cost);
+        mouseTrapMPS.text(mouseTrap.baseMPS);
+        mouseTrapBought.text(mouseTrap.totalBought);
+        trashCanCost.text(trashCan.cost);
+        trashCanMPS.text(trashCan.baseMPS);
+        trashCanBought.text(trashCan.totalBought);
+        poisonCost.text(poison.cost);
+        poisonMPS.text(poison.baseMPS);
+        posionBought.text(poison.totalBought);
+        machineGunCost.text(machineGun.cost);
+        machineGunMPS.text(machineGun.baseMPS);
+        machineGunBought.text(machineGun.totalBought);
+        tankCost.text(tank.cost);
+        tankMPS.text(tank.baseMPS);
+        tankBought.text(tank.totalBought);
+        nukeCost.text(nuke.cost);
+        nukeMPS.text(nuke.baseMPS);
+        nukeBought.text(nuke.totalBought);
+    
     return true;
 }
 
@@ -434,12 +551,12 @@ function isFirstGame() {
         return false;
     }
     if(localStorage["catclick.firstgame"] === "false"){
-        console.log("This is not first game");
+        //console.log("This is not first game");
         firstGame = false;
         return false;
     }
     else {
-        console.log("This is first game");
+        //console.log("This is first game");
         return true;
     }
 }
@@ -454,6 +571,8 @@ function saveButton() {
 function deleteDataButton() {
     $('.delete-data').click( function() {
         localStorage.clear();
+        
+        //reset all vars
          totalMoney = 0.00;
         totalPlayedTime = 0;
          totalBuildings = 0;
@@ -462,13 +581,63 @@ function deleteDataButton() {
          totalMPS = 0;
          firstGame = true;
 
-        //Other vars. 
-        MoneyForThisRound = 000000;
+        MoneyForThisRound = 1000000;
          MoneyPerSecondForThisRound = 0;
          clicksForThisRound = 0;
          buildingsForThisRound = 0;
          upgradesForThisRound = 0;
          playedTime = 0;
+        
+        
+        //reset all objects
+        cheese.totalBought = 0;
+        cheese.baseCost = CHEESE_COST;
+        cheese.baseMPS = CHEESE_MPS;
+        cheeseCost.text(cheese.baseCost);
+        cheeseMPS.text(cheese.baseMPS);
+        cheeseBought.text(cheese.totalBought);
+
+        mouseTrap.totalBought = 0;
+        mouseTrap.baseCost = MOUSE_TRAP_COST;
+        mouseTrap.baseMPS = MOUSE_TRAP_MPS;
+        mouseTrapCost.text(mouseTrap.baseCost);
+        mouseTrapMPS.text(mouseTrap.baseMPS);
+        mouseTrapBought.text(mouseTrap.totalBought);
+
+        trashCan.totalBought = 0;
+        trashCan.baseCost = TRASH_CAN_COST;
+        trashCan.baseMPS = TRASH_CAN_MPS;
+        trashCanCost.text(trashCan.baseCost);
+        trashCanMPS.text(trashCan.baseMPS);
+        trashCanBought.text(trashCan.totalBought);
+        
+        poison.totalBought = 0;
+        poison.baseCost = POISON_COST;
+        poison.baseMPS = POISON_MPS;
+        poisonCost.text(poison.baseCost);
+        poisonMPS.text(poison.baseMPS);
+        posionBought.text(poison.totalBought);
+
+        machineGun.totalBought = 0;
+        machineGun.baseCost = MACHINE_GUN_COST;
+        machineGun.baseMPS = MACHINE_GUN_MPS;
+        machineGunCost.text(machineGun.baseCost);
+        machineGunMPS.text(machineGun.baseMPS);
+        machineGunBought.text(machineGun.totalBought);
+        
+        tank.totalBought = 0;
+        tank.baseCost = TANK_COST;
+        tank.baseMPS = TANK_MPS;
+        tankCost.text(tank.baseCost);
+        tankMPS.text(tank.baseMPS);
+        tankBought.text(tank.totalBought);
+
+        nuke.totalBought = 0;
+        nuke.baseCost = NUKE_COST;
+        nuke.baseMPS = NUKE_MPS;
+        nukeCost.text(nuke.baseCost);
+        nukeMPS.text(nuke.baseMPS);
+        nukeBought.text(nuke.totalBought);
     });
 }
 
