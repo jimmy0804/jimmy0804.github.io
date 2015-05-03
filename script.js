@@ -8,7 +8,7 @@ var totalMPS = 0;
 var firstGame = true;
 
 //Other vars.
-var MoneyForThisRound = 1000000;
+var MoneyForThisRound = 0;
 var MoneyPerSecondForThisRound = 0;
 var clicksForThisRound = 0;
 var buildingsForThisRound = 0;
@@ -581,7 +581,7 @@ function deleteDataButton() {
          totalMPS = 0;
          firstGame = true;
 
-        MoneyForThisRound = 1000000;
+        MoneyForThisRound = 0;
          MoneyPerSecondForThisRound = 0;
          clicksForThisRound = 0;
          buildingsForThisRound = 0;
