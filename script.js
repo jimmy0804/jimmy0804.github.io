@@ -13,6 +13,7 @@ var MoneyPerSecondForThisRound = 0;
 var clicksForThisRound = 0;
 var buildingsForThisRound = 0;
 var upgradesForThisRound = 0;
+var moneyPerClick = 1;
 var playedTime = 0;
 
 var CHEESE_COST = 100;
@@ -180,6 +181,7 @@ function displayMoney(){
     $('.cumulative').find('.cumulative-upgrade').text(totalUpgrades);
     $('.cumulative').find('.cumulative-building').text(totalBuildings);
     $('.cumulative').find('.cumulative-mps').text(totalMPS);
+    $('.cumulative').find('.cumulative-money-per-click').text(moneyPerClick);
     
 }
 
@@ -187,8 +189,8 @@ function displayMoney(){
 function clickControl() {
     $('.cat-click').click(function() {
          
-        totalMoney += 1;
-        MoneyForThisRound += 1;
+        totalMoney += moneyPerClick;
+        MoneyForThisRound += moneyPerClick;
         displayMoney();
         totalClicks += 1; //keep track on how many times has user clicked 
         clicksForThisRound += 1; //keep track on how many times has user clicked 
@@ -224,6 +226,28 @@ function checkHoverButt(buttonID,objectName,money,showSecond,minReq,times){
              if (MoneyForThisRound >= money && objectName.totalBought >=  minReq){
                 objectName.addNewMPS(times);
                 showSecond.text(objectName.baseMPS);
+                $(buttonID).tooltip('hide')
+                $(buttonID).remove();
+                 totalUpgrades += 1;
+                 upgradesForThisRound += 1;
+             }
+        });
+}
+
+function addMoneyPerClick(buttonID,money,moneyToAdd) {
+    $(buttonID).hover(function() {
+                if (MoneyForThisRound >= money){ //check if money is enough to buy
+                    $(this).addClass('butt-hover');
+                }
+            }, 
+            function () {
+                $(this).removeClass('butt-hover');   
+            }
+        );
+    
+     $(buttonID).click( function () {
+             if (MoneyForThisRound >= money ){
+                moneyPerClick += moneyToAdd;
                 $(buttonID).tooltip('hide')
                 $(buttonID).remove();
                  totalUpgrades += 1;
@@ -341,6 +365,8 @@ function addBuyList() {
 }
 
 function addShowList() {
+    
+    addMoneyPerClick('#click-2',1000,10);
     checkHoverButt('#cheese-2',cheese,10000,cheeseMPS,1,2);
     checkHoverButt('#mouse-trap-2',mouseTrap,50000,mouseTrapMPS,1,2);
     checkHoverButt('#trash-can-2',trashCan,300000,trashCanMPS,1,2);
@@ -349,6 +375,7 @@ function addShowList() {
     checkHoverButt('#tank-2',tank,20000000,tankMPS,1,2);
     checkHoverButt('#nuke-2',nuke,818181818,nukeMPS,1,2);
     
+    addMoneyPerClick('#click-2-2',50000,50);
     checkHoverButt('#cheese-2-2',cheese,100000,cheeseMPS,10,2);
     checkHoverButt('#mouse-trap-2-2',mouseTrap,500000,mouseTrapMPS,10,2);
     checkHoverButt('#trash-can-2-2',trashCan,3000000,trashCanMPS,10,2);
@@ -357,6 +384,7 @@ function addShowList() {
     checkHoverButt('#tank-2-2',tank,200000000,tankMPS,10,2);
     checkHoverButt('#nuke-2-2',nuke,1818181818,nukeMPS,10,2);
 
+    addMoneyPerClick('#click-2-3',250000,100);
     checkHoverButt('#cheese-2-3',cheese,500000,cheeseMPS,50,2);
     checkHoverButt('#mouse-trap-2-3',mouseTrap,2500000,mouseTrapMPS,50,2);
     checkHoverButt('#trash-can-2-3',trashCan,15000000,trashCanMPS,50,2);
@@ -365,6 +393,7 @@ function addShowList() {
     checkHoverButt('#tank-2-3',tank,1000000000,tankMPS,50,2);
     checkHoverButt('#nuke-2-3',nuke,9090909090,nukeMPS,50,2);
     
+    addMoneyPerClick('#click-2-4',50000000,1000);
     checkHoverButt('#cheese-2-4',cheese,10000000,cheeseMPS,100,2);
     checkHoverButt('#mouse-trap-2-4',mouseTrap,500000000,mouseTrapMPS,100,2);
     checkHoverButt('#trash-can-2-4',trashCan,3000000000,trashCanMPS,100,2);
@@ -400,6 +429,7 @@ function saveGameState() {
     localStorage["catclick.upgradesforthisround"] = upgradesForThisRound;
     localStorage["catclick.totalclicks"] = totalClicks;
     localStorage["catclick.totalmps"] = totalMPS;
+    localStorage["catclick.moneyperclick"] = moneyPerClick;
     
     //all the building storage
     localStorage["catclick.cheesenum"] = cheese.totalBought;
@@ -470,6 +500,7 @@ function resumeGame() {
     upgradesForThisRound = parseInt(localStorage["catclick.upgradesforthisround"]);
     totalClicks = parseInt(localStorage["catclick.totalclicks"]);
     totalMPS = parseInt(localStorage["catclick.totalmps"]);
+    moneyPerClick = parseInt(localStorage["catclick.moneyperclick"]);
     
     cheese.totalBought = parseInt(localStorage["catclick.cheesenum"]);
     mouseTrap.totalBought = parseInt(localStorage["catclick.mousetrapnum"]);
@@ -587,6 +618,7 @@ function deleteDataButton() {
          buildingsForThisRound = 0;
          upgradesForThisRound = 0;
          playedTime = 0;
+        moneyPerClick = 1;
         
         
         //reset all objects
