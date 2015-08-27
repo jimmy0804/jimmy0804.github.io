@@ -1,0 +1,162 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+    font-family: 'Oswald', sans-serif;
+    background-image: url(pics/main-background.jpg);
+    background-repeat: repeat-y;
+    background-size: 1600px 800px;
+}
+
+body > .container-fluid {
+  padding: 60px 15px 0;
+}
+
+.infor {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00BFFF;
+}
+
+.header {
+    font-size: 30px;
+    color: white;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.header-list li{
+   margin-left: 20px;
+    margin-top: 10px;
+}
+
+
+/* show room css */
+.show-room{
+    height: 500px;
+    max-height: 700px;
+}
+
+.butt {
+   border: 1px outset blue;
+   margin: 10px 10px 10px 10px;
+   background-color: lightBlue;
+   height:50px;
+   width:50px;
+   cursor:pointer;
+}
+
+.butt-hover {
+   background-color: blue;
+   color:white;
+}
+
+/*ned show room css*/
+.main{
+    max-height: 700px;
+}
+
+/* buy room css*/
+.buy-room{
+    height: 500px;
+    max-height: 700px;
+}
+
+.buy-room img {
+    height: 60px;
+    width: 60px;
+    float:left;
+    padding-right: px;
+    margin-left: 10px;
+    display: block;
+    
+}
+
+.buy-room p{
+    margin-bottom: 0;
+    text-align: center
+}
+
+#buy-room-text{
+    padding-left: 10px;
+}
+
+/* End buy room css */
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+code {
+  font-size: 80%;
+}
+
+.cat-click{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+#button2 {
+  background: #d11717;
+  border: 2px solid #eee;
+  height: 38px;
+  width: 125px;
+  margin: 50px 0 0 50px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  line-height: 38px;
+}
+
+.navbar-inner {
+  background-color: red;
+  /* remove the gradient */
+  background-image: none;
+  /* set font color to white */
+  color: white;
+}   
+
+/* menu items */
+
+/* set the background of the menu items to pink and default color to white */
+.navbar .nav > li > a {
+  background-color: red;
+  color: white;
+}
+
+/* set hover and focus to lightblue */
+.navbar .nav > li > a:hover {
+  background-color: lightblue;
+  color: white;
+}
+
+.show-cat {
+    align-content: center;
+    height: 300px;
+    width: 350px;
+}
