@@ -1,3 +1,7 @@
+var host = "jimmy0804.github.io";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+
 $(document).ready(function() {
     $('#ex1').slider({
   	formatter: function(value) {
