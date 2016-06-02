@@ -23,6 +23,8 @@ function clickActions() {
   });
 
   $('.getRestaurant').click(function() {
+    console.log(latitude)
+    console.log(longitude);
     if (latitude == 0 && longitude == 0) {
       warningMessageTag.innerHTML = "Please let us know your current location by clicking the above button.";
     }
