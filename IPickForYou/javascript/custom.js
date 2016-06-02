@@ -79,7 +79,8 @@ function clickActions() {
       warningMessageTag.innerHTML = "Please let us know your current location by clicking the above button.";
     }
     else {
-      getRestaurantJSON()
+      //getRestaurantJSON()
+      initialize();
     }
   });
 }
@@ -144,7 +145,6 @@ function geoError(error) {
 function init() {
   sliderSetUp();
   clickActions();
-  initialize();
 }
 
 $(document).ready(init());
