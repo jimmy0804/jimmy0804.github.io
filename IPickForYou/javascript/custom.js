@@ -16,6 +16,56 @@ var geoOptions = {
   timeout: 10 * 1000
 }
 
+var map;
+var service;
+var infowindow;
+
+function initialize() {
+  var pyrmont = new google.maps.LatLng(latitude,longitude);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: pyrmont,
+      zoom: 15
+    });
+
+  var request = {
+    location: pyrmont,
+    radius: sliderValue,
+    types: ['restaurant','food']
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+}
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    if (results.length > 0) {
+      var randomNumber = Math.floor(Math.random() * results.length)
+      console.log(randomNumber)
+      createMarker(results[randomNumber])
+    }
+
+//    for (var i = 0; i < results.length; i++) {
+//      var place = results[i];
+//      createMarker(results[i]);
+//    }
+  }
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
 function clickActions() {
   $('.getLocation').click(function() {
       getLocation();
@@ -70,13 +120,7 @@ function getLocation() {
 
 function showPosition(position) {
   latitude = position.coords.latitude;
-  longitude = position.corrds.longitude;
-    //locationTag.innerHTML = "Latitude: " + position.coords.latitude +
-    //"<br>Longitude: " + position.coords.longitude;
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
-    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
-
-document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+  longitude = position.coords.longitude;
 }
 
 function geoError(error) {
@@ -100,6 +144,7 @@ function geoError(error) {
 function init() {
   sliderSetUp();
   clickActions();
+  initialize();
 }
 
 $(document).ready(init());

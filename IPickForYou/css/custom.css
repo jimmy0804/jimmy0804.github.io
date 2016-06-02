@@ -61,6 +61,10 @@ body {
 	background: #BABABA;
 }
 
+#map {
+  height: 100%
+}
+
 @media(min-width:768px) {
     .left-main-body{
 
