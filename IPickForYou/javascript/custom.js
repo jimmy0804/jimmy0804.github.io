@@ -43,7 +43,7 @@ function sliderSetUp() {
 
 function getRestaurantJSON() {
   var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=" + sliderValue + "&types=restaurant&key=" + apuKey;
-
+  console.log(url);
     $.ajax({
     type: 'GET',
     url: url,
