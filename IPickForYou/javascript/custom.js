@@ -9,9 +9,9 @@ var apuKey = "AIzaSyDuUwTdZox59hwO8INMfG6vgXr_7kOwJdo"
 var locationTag = document.getElementById("location-result");
 var sliderTag = document.getElementById("slider-result");
 var warningMessageTag = document.getElementById("warning-message");
-var latitude = 0
-var longitude = 0
-var sliderValue = 20;
+var latitude = 0//22.265737
+var longitude = 0 //114.236640
+var sliderValue = 200;
 var geoOptions = {
   timeout: 10 * 1000
 }
@@ -40,6 +40,7 @@ function initialize() {
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    console.log("yes")
     if (results.length > 0) {
       var randomNumber = Math.floor(Math.random() * results.length)
       console.log(randomNumber)
@@ -79,7 +80,6 @@ function clickActions() {
       warningMessageTag.innerHTML = "Please let us know your current location by clicking the above button.";
     }
     else {
-      //getRestaurantJSON()
       initialize();
     }
   });
@@ -92,24 +92,6 @@ function sliderSetUp() {
         sliderTag.innerHTML = value + "m"
       }
     });
-}
-
-function getRestaurantJSON() {
-  var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=" + sliderValue + "&types=restaurant&key=" + apuKey;
-  console.log(url);
-    $.ajax({
-    type: 'GET',
-    url: url,
-    //data: daa,
-    success: function(data) {
-    //You can use any jQuery/JavaScript here!!!
-      //if (data == "success") {
-
-        alert(data);
-    //  }
-    },
-    dataType: 'JSON'
-  });
 }
 
 function getLocation() {
