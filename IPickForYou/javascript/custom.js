@@ -31,7 +31,7 @@ function initialize() {
   var request = {
     location: pyrmont,
     radius: sliderValue,
-    types: ['restaurant','food']
+    types: ['restaurant']
   };
 
   service = new google.maps.places.PlacesService(map);
