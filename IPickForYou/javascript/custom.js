@@ -9,9 +9,13 @@ var apuKey = "AIzaSyDuUwTdZox59hwO8INMfG6vgXr_7kOwJdo"
 var locationTag = document.getElementById("location-result");
 var sliderTag = document.getElementById("slider-result");
 var warningMessageTag = document.getElementById("warning-message");
-var latitude = 0//22.265737
-var longitude = 0 //114.236640
+var detailView = document.getElementById("detail-view");
+var restaurantNameTag = document.getElementById("restaurant-name");
+var restaurantAddressTag = document.getElementById("restaurant-address");
+var latitude = 22.265737;
+var longitude =  114.236640;
 var sliderValue = 200;
+var selectedLocationLatLng;
 var geoOptions = {
   timeout: 10 * 1000
 }
@@ -25,45 +29,78 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map'), {
       center: pyrmont,
-      zoom: 3
+      zoom: 17
     });
 
   var request = {
     location: pyrmont,
     radius: sliderValue,
-    types: ['restaurant']
+    type: 'restaurant',
+    openNow: true
   };
-
+  infowindow = new google.maps.InfoWindow();
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 }
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    console.log("yes")
     if (results.length > 0) {
-      var randomNumber = Math.floor(Math.random() * results.length)
-      console.log(randomNumber)
-      createMarker(results[randomNumber])
+      var randomNumber = Math.floor(Math.random() * results.length);
+      createMarker(results[randomNumber]);
+      getPlaceDetail(results[randomNumber].place_id);
+      ScrollToTarget();
     }
-
-//    for (var i = 0; i < results.length; i++) {
-//      var place = results[i];
-//      createMarker(results[i]);
-//    }
   }
 }
 
+function getPlaceDetail(placeId) {
+  var request = {
+  placeId: placeId
+};
+service.getDetails(request, getPlaceDetailCallBack);
+}
+
+function getPlaceDetailCallBack(place, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+      console.log(place);
+    }
+}
+
 function createMarker(place) {
-  var placeLoc = place.geometry.location;
+  console.log(place);
+  selectedLocationLatLng = place.geometry.location;
+  // Show the restaurant name on the website
+  restaurantNameTag.innerHTML = place.name;
+  restaurantAddressTag.innerHTML = place.vicinity;
   var marker = new google.maps.Marker({
     map: map,
-    position: place.geometry.location
+    position: selectedLocationLatLng
   });
+
+ maxZoomService = new google.maps.MaxZoomService();
+
+ map.addListener('click', showMaxZoom);
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
+  });
+}
+
+function showMaxZoom(e) {
+  //selectedLocationLatLng = new google.maps.LatLng(latitude,longitude)
+  maxZoomService.getMaxZoomAtLatLng(e.latLng, function(response) {
+    if (response.status !== google.maps.MaxZoomStatus.OK) {
+      infoWindow.setContent('Error in MaxZoomService');
+      console.log("???");
+    } else {
+      infoWindow.setContent(
+          'The maximum zoom at this location is: ' + response.zoom);
+          console.log('The maximum zoom at this location is: ' + response.zoom);
+    }
+    infoWindow.setPosition(e.latLng);
+    infoWindow.open(map);
   });
 }
 
@@ -80,20 +117,19 @@ function clickActions() {
       warningMessageTag.innerHTML = "Please let us know your current location by clicking the above button.";
     }
     else {
+      detailView.removeAttribute("style");
       initialize();
     }
   });
 }
 
-function sliderSetUp() {
-      $('#ex1').slider({
-      formatter: function(value) {
-        sliderValue = value
-        sliderTag.innerHTML = value + "m"
-      }
-    });
-}
 
+
+
+
+
+
+// Get Location Methods
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition,geoError,geoOptions);
@@ -107,9 +143,10 @@ function showPosition(position) {
 }
 
 function geoError(error) {
-  console.log('Error occurred. Error code: ' + error.code);
+  locationTag.style.color = "#E71D36"
   switch (error.code) {
-    case 0: locationTag.innerHTML = "Something went wrong, we could not get your current location.";
+    case 0:
+    locationTag.innerHTML = "Something went wrong, we could not get your current location.";
     break;
     case 1: locationTag.innerHTML = "Premission denied, we could not get your current location.";
     break;
@@ -122,6 +159,22 @@ function geoError(error) {
    //   1: permission denied
    //   2: position unavailable (error response from location provider)
    //   3: timed out
+}
+
+// Init for Bootstrap slider
+function sliderSetUp() {
+      $('#ex1').slider({
+      formatter: function(value) {
+        sliderValue = value
+        var walkingTime = value / 83
+        sliderTag.innerHTML = value + "m" + " walking ETA:" + Math.floor(walkingTime) + " mins"
+      }
+    });
+}
+
+function ScrollToTarget()
+{
+     detailView.scrollIntoView(true);
 }
 
 function init() {
