@@ -12,8 +12,8 @@ var warningMessageTag = document.getElementById("warning-message");
 var detailView = document.getElementById("detail-view");
 var restaurantNameTag = document.getElementById("restaurant-name");
 var restaurantAddressTag = document.getElementById("restaurant-address");
-var latitude = 22.265737;
-var longitude =  114.236640;
+var latitude = 0;///22.265737;
+var longitude = 0; //114.236640;
 var sliderValue = 200;
 var selectedLocationLatLng;
 var geoOptions = {
