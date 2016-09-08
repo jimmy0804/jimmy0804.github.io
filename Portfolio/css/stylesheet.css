@@ -1,7 +1,21 @@
-.navbar {
+.nav-bar {
   margin-bottom: 10%;
 }
 .profile-image {
   max-width: 160px;
 	height:auto;
+}
+
+.about_me_col {
+  margin: 0 5% 0 5%;
+}
+
+.green-color {
+  color: #159957;
+}
+
+@media(min-width:768px) {
+  .about_me_col {
+    margin: 0 20% 0 20%;
+  }
 }
