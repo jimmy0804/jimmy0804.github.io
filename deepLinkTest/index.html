@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <meta charset="utf-8">
         <title></title>
     </head>
     <body>
-    	<script type="text/javascript">
-    		window.onload = function () {
-    			var mobileFallback = "https://youtube.com/watch?v=4KnNVK-udTU";
-    			var appLink = "youtube://4KnNVK-udTU"
-    			if( /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+        <script type="text/javascript">
+            window.onload = function () {
+                var mobileFallback = "https://youtube.com/watch?v=4KnNVK-udTU";
+                var appLink = "goxip://goxip.com/hk/en/stores/glow-gorgeous"
+                if( /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
                     window.location = appLink;
                     window.setTimeout(function() {
                         window.location = mobileFallback;
@@ -19,7 +19,7 @@
                     window.removeEventListener('pagehide', killPopup);
                 }
                 window.addEventListener('pagehide', killPopup);
-    		}
-    	</script>
+            }
+        </script>
     </body>
 </html>
