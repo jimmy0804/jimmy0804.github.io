@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            window.onload = function () {
+                var mobileFallback = "https://www.goxip.com/hk/en/stores/glow-gorgeous";
+                var appLink = "goxip://goxip.com/hk/en/stores/glow-gorgeous"
+                if( /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+                    window.location = appLink;
+                    window.setTimeout(function() {
+                        window.location = mobileFallback;
+                    }, 25);
+                }
+                function killPopup() {
+                    window.removeEventListener('pagehide', killPopup);
+                }
+                window.addEventListener('pagehide', killPopup);
+            }
+        </script>
+    </body>
+</html>
