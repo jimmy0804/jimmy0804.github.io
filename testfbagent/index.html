@@ -5,9 +5,10 @@
         <title></title>
     </head>
     <body>
+        <h1 id="test"></h1>
         <script type="text/javascript">
             var ua = navigator.userAgent || navigator.vendor || window.opera;
-            alert(ua);
+            document.getElementById("test").innerHTML = ua;
         </script>
     </body>
 </html>
