@@ -1,0 +1,25 @@
+.label{
+    margin-right: 10px;
+}
+
+.stepContainer{
+    overflow-y: hidden;
+}
+
+tfoot {
+    display: table-header-group;
+}
+
+select{
+    border-radius: 2px;
+    padding:3px;
+    font: 500;
+}
+
+.headings>th{
+    padding:6px !important
+}
+
+.form-control{
+    border-radius: 2px !important
+}

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Securli Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- PNotify -->
+    <link href="../vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="../vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="../vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+
+    <link href="../build/css/custom.css" rel="stylesheet">
+    <link href="../build/css/main.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><img src="images/techcom_logo.png"></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+
+           <!-- sidebar menu -->
+           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a href="index3.html"><i class="fa fa-dashboard"></i> Dashboard </a></li>
+                <li><a href="incidents.html"><i class="fa fa-bug"></i> Incidents </a></li>
+                <li><a><i class="fa fa-wrench"></i> Tools <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="form.html">External IP Lookup</a></li>
+                    <li><a href="form_advanced.html">CVE</a></li>
+                    <li><a href="form_wizards.html">Form Wizard</a></li>
+                    <li><a href="form_upload.html">Form Upload</a></li>
+                    <li><a href="form_buttons.html">Form Buttons</a></li>
+                  </ul>
+                </li>
+
+                <li><a><i class="fa fa-table"></i> Report <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="report.html">Monthly Report</a></li>
+                    <li><a href="media_gallery.html">Media Gallery</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                    <li><a href="icons.html">Icons</a></li>
+                    <li><a href="glyphicons.html">Glyphicons</a></li>
+                    <li><a href="widgets.html">Widgets</a></li>
+                    <li><a href="invoice.html">Invoice</a></li>
+                    <li><a href="inbox.html">Inbox</a></li>
+                    <li><a href="calendar.html">Calendar</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-users"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="form.html">User</a></li>
+                    <li><a href="form_advanced.html">Notification Setting</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-sitemap"></i> Update Manager <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="update_manager_overview.html">Overview</a></li>
+                    <li><a href="form_advanced.html">Ops History</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-cubes"></i> Inventory <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="form.html">User</a></li>
+                    <li><a href="form_advanced.html">Notification Setting</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /sidebar menu -->
+
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                  Ken Smith
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="javascript:;"> Profile</a></li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-red pull-right">50%</span>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">6</span>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                          <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                          <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                          <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                          <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Incidents</h3>
+                        </div>
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel" id="incidents_Table">
+                                <div class="x_title">
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <h4>All Incidents<small></small></h4>
+                                </div>
+                                <div class="x_content">
+                                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Severity</th>
+                                                <th>Incident ID</th>
+                                                <th>Incident Name</th>
+                                                <th>Source</th>
+                                                <th>Destination</th>
+                                                <th>Incident Time</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="x_panel"id="Incident_Details_Panel">
+                        <div>
+                            <h4>Incident Status</h4>
+                            <form class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <div id="scan-step-5" role="tabpanel" class="tab-pane fade active in">
+                                        <hr>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Incident ID :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="incident_ID"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Progress :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="Progress"></span>Waiting
+                                                on client review
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Severity :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="Severity"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Source :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="Source"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Destination :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="Destination"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Incident Time :</label>
+                                            <div class="col-xs-6 col-md-7 col-lg-5">
+                                                <span class="pull-left text-left control-label text-info" id="Incident_Time"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Incident Description :</label>
+                                            <div class="col-xs-6 col-md-9 col-lg-10">
+                                                <span class="pull-left text-left text-info" id="Incident_Desc"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-6 col-md-3 col-lg-2">Incident Remedation :</label>
+                                            <div class="col-xs-6 col-md-9 col-lg-10">
+                                                <span class="pull-left text-left text-info" id="Remedation"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#status" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Incident Log</a>
+                                    </li>
+                                    <li role="presentation" class=""><a href="#tab_content1" id="CVEtab" role="tab" data-toggle="tab">Related CVE patch</a>
+                                    </li>
+                                    <li role="presentation" class=""><a href="#tab_content2" id="profile-tab" role="tab" data-toggle="tab" aria-expanded="false">Events</a>
+                                    </li>
+                                    <li role="presentation" class=""><a href="#tab_content3" id="history-tab" role="tab" data-toggle="tab" aria-expanded="false">Events Histroy</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in" id="status" aria-labelledby="home-tab">
+
+                                        <table id="datatable-event" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Log Recived Time</th>
+                                                    <th>Log Type</th>
+                                                    <th>Name</th>
+                                                    <th>Reporting Device</th>
+                                                    <th>User</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content1" aria-labelledby="CVEtab">
+                                        <h3 class="StepTitle ">Related CVE patch</h3>
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Select</th>
+                                                    <th>CVE#</th>
+                                                    <th>Product</th>
+                                                    <th>CVSS VERSION 3.0 RISK</th>
+                                                    <th>Supported Versions Affected</th>
+                                                    <th>Current Version</th>
+                                                    <th>Target Machine</th>
+                                                    <th>Min. Auth Level</th>
+                                                    <th>Status</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input id="cve_check" type="checkbox" onclick="checkboxes()" value="checked">
+                                                    </td>
+                                                    <th scope="row">
+                                                        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7673" target="new">CVE-2017-7673 <i class="fa fa-external-link"></i></a></th>
+                                                    <td>Apache OpenMeetings</td>
+                                                    <td>High</td>
+                                                    <td>8.3</td>
+                                                    <td>8.22</td>
+                                                    <td>10.50.30.52 (rwdc2.techcom.com)</td>
+                                                    <td>SysAdmin</td>
+                                                    <td><span id="patch_status"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Confirm</button>
+                                        <small> <span id="number_of_pending"></span> patch select</small>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                        <!--start of Patch Events-->
+                                        <form id="process">
+
+                                            <h2>Patch Events</h2>
+                                            <p class="font-gray-dark">
+                                            </p>
+
+                                            <div class="form-group">
+                                                <table id="patch_event" class="display" cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Time</th>
+                                                            <th>Patch ID</th>
+                                                            <th>Event Name</th>
+                                                            <th>target Machine</th>
+                                                            <th>Requester</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </form>
+                                        <!--end of Patch Events-->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="history-tab">
+                                        <div class="btn-group pull-right">
+                                            <button class="btn btn-sm btn-primary" type="button">Escalate to SOC</button>
+                                            <button class="btn btn-sm btn-success" type="button">Add to watch list</button>
+                                            <div class="btn-group">
+                                                <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" type="button"> Export <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">pdf</a>
+                                                    </li>
+                                                    <li><a href="#">csv</a>
+                                                    </li>
+                                                    <li><a href="#">xml</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h3 class="StepTitle">Event History</h3>
+                                        <div class=col-lg-12>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <table id="event_history" class="table-striped display" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Time</th>
+                                                                <th>Action</th>
+                                                                <th>User</th>
+                                                                <th>Note</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page content -->
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Securli Dashboard By <a href="https://www.netswitch.net" target="_blank"> Netswitch</a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+    <!--start of the modal-->
+    <div class="form-group row" id="patch_select_table">
+        <div class="col-sm-10">
+            <div class="modal  bs-example-modal-lg" id="patchConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                                                    </button>
+                            <h3 class="modal-title" id="myModalLabel">Sorry you don't have permission to approve this patch
+                            </h3>
+                            <small>CVE-2017-7673</small>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Target machine:</label>
+                                        <p>10.50.30.52 (rwdc2.TechCom.com)</p>
+                                        <label class="control-label col-md-3">Reason:</label>
+
+                                        <p> The target machine requred at least
+                                            <strong> SysAdmin</strong> level to apply patches, please submit the appraval
+                                            request from below.
+                                        </p>
+                                        <label class="control-label col-md-5">Send appraval request to:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <select id="users" class="select2_single form-control" tabindex="-1">
+                                                                                            <option></option>
+                                                                                            <option value="Jeff Webb">Jeff Webb (jwebb@techcom.com)</option>
+                                                                                            <option value="Aaron Mahoney">Aaron Mahoney (amahoney@techcom.com)</option>
+                                                                                            <option value="Brian Weinberg">Brian Weinberg (bweinberg@techcom.com)</option>
+                                                                                        </select>
+                                            <br>
+                                        </div>
+                                        <label class="control-label col-md-5">Schedule Patching:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                            <label class="form-check-label" for="gridRadios1">
+                                                                                                Perform the patch now
+                                                                                            </label>
+                                            <br>
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                            <label class="form-check-label" for="gridRadios2">
+                                                                                                Schedule the patch for:
+                                                                                            </label>
+
+                                            <div class='input-group date col-md-6' id='myDatepicker'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <label class="control-label col-md-5" for="message">Addition Message:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <textarea id="message" class="form-control" name="message"></textarea>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-9">
+                                <div class="text-left">
+                                    <button type="button" class="btn btn-danger" onclick="new PNotify({
+                                                                                title: 'Override permission',
+                                                                                text: 'The requests has been submit to all approvers and pending install',
+                                                                                type: 'success',
+                                                                                styling: 'bootstrap3'
+                                                                                });$('#patch_select_table').slideUp();apply('override');"
+                                        data-dismiss="modal">Override</button>
+                                    <small>* Override will automatically notice all approvers. </small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pull-right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" onclick="new PNotify({
+                                                                    title: 'Request Submit',
+                                                                    text: 'The requests has been submit to ' +  $('#users').val(),
+                                                                    type: 'success',
+                                                                    styling: 'bootstrap3'
+                                                                    }); $('#patch_select_table').slideUp(); apply('');"
+                                    data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of the modal-->
+        </div>
+    </div>
+    <!-- /page content -->
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+
+
+    <!--Parsley 
+  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>-->
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- bootstrap-wysiwyg -->
+    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+
+    <!--Moment JS-->
+    <script src="../vendors/moment/moment.js"></script>
+
+    <!-- bootstrap-datetimepicker -->
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- PNotify -->
+    <script src="../vendors/pnotify/dist/pnotify.js"></script>
+    <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+    <script src="../build/js/incidents.js"></script>
+
+</body>
+
+</html>
+
+<script>
+    $('#myDatepicker').datetimepicker();
+
+</script>

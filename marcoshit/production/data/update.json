@@ -1,0 +1,124 @@
+{
+    "data": [
+        {
+            "name": "LV-CUBE.techcom",
+            "location":"SSF",            
+            "ip": "10.5.10.101",
+            "type": "Cisco IOS",
+            "version": "12.1(14)EA1",
+            "versionURL" : "https://www.cisco.com/c/en/us/obsolete/ios-nx-os-software/cisco-ios-software-release-12-1-14-ea1.html",
+            "scheduled": "no",
+            "Date": "Nov 21, 2017 5:00 PM"
+        },
+        {
+            "name": "L3RTR",
+            "ip": "10.1.102.10",
+            "location":"SSF",            
+            "type": "Cisco IOS",
+            "version": "15.1(1)T",
+            "versionURL": "https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-software-release-15-1-1-t/model.html",
+            "scheduled": "no",
+            "Date": "Jun 21, 2017 5:00 PM"
+        },
+        {
+            "name": "LCA-SL-2811  - STL",
+            "location":"SSF",            
+            "ip": "10.3.121.1",
+            "type": "Cisco IOS",
+            "version": "15.1(4)M",
+            "versionURL": "https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-software-release-15-1-4-m/model.html",
+            "scheduled": "no",
+            "Date": "Jun 21, 2017 5:00 PM"
+        },
+        {
+            "name": "15-fl-bb-sw",
+            "location":"SSF",
+            "ip": "10.1.3.190",
+            "type": "Cisco IOS",
+            "version": "12.2(33)SXI1",
+            "versionURL":"https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-software-release-12-2-33-sxi1/model.html",
+            "scheduled": "no",
+            "Date": "Aug 21, 2017 5:00 PM"
+        },
+        {
+            "name": "Edge-Sw-Outside",
+            "location":"DMZ",                        
+            "ip": "10.1.3.98",
+            "type": "Cisco IOS",
+            "version": "12.2(18)SXD",
+            "versionURL":"https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-software-release-12-2-18-sxd/model.html",
+            "scheduled": "no",
+            "Date": "Mar 21, 2017 5:07 PM"
+        },
+        {
+            "name": "Edge-Sw-DMZ",
+            "location":"DMZ",            
+            "ip": "10.1.3.99",
+            "type": "Cisco IOS",
+            "version": "15.6(1)S",
+            "versionURL":"https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-software-release-15-6-1-s/model.html",
+            "scheduled": "no",
+            "Date": "Mar 18, 2017 5:04 PM"
+        },
+        {
+            "name": "SRVADFS2",
+            "location":"Azure",            
+            "ip": "10.50.30.79",
+            "type": "Microsoft Windows Server 2016 Datacenter",
+            "version": "10.0",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "scheduled": "no",
+            "Date": "Mar 06, 2017 5:00 PM"
+        },
+        {
+            "name": "srvstgspa2.techcom.org",
+            "location":"Azure",            
+            "ip": "10.50.30.158",
+            "type": "Microsoft Windows Server 2012 R2 Datacenter",
+            "version": "6.3",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "scheduled": "no",
+            "Date": "Aug 21, 2017 5:00 PM"
+        },
+        {
+            "name": "SRVADFS6",
+            "location":"AWS",
+            "ip": "216.211.169.171",
+            "type": "Microsoft Windows Server 2016 Datacenter",
+            "version": "10.0",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "scheduled": "no",
+            "Date": "Aug 21, 2017 5:00 PM"
+        },
+        {
+            "name": "srvstgdsdb1.techcom.org",
+            "location":"Azure",            
+            "ip": "10.50.30.140",
+            "type": "Microsoft Windows Server 2012 R2 Datacenter",
+            "version": "6.3",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "scheduled": "no",
+            "Date": "Aug 21, 2017 5:00 PM"
+        },
+        {
+            "name": "srvstgspa1.techcom.org",
+            "location":"Azure",
+            "ip": "10.50.30.161",
+            "type": "Microsoft Windows Server 2012 R2 Datacenter",
+            "version": "6.3",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "scheduled": "no",
+            "Date": "Aug 21, 2017 5:00 PM"
+        },
+        {
+            "name": "srvstgdsrpt1.techcom.org",
+            "ip": "10.50.30.142",
+            "location":"Azure",            
+            "type": "Microsoft Windows Server 2012 R2 Datacenter",
+            "version": "6.3",
+            "scheduled": "no",
+            "versionURL":"https://support.microsoft.com/en-us/help/4041691",
+            "Date": "Aug 21, 2017 5:00 PM"
+        }
+    ]
+}
