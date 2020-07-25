@@ -98,4 +98,34 @@ x & ~mask =
 0000 0110
 ```
 
-### Check is power of 2
+### Is Even
+```Swift
+func isEven(_ x: UInt8) -> Bool {
+  (x & 1) == 0
+}
+```
+steps:
+```
+x = 1110
+x & 1 = 
+1110 & 
+0001
+----
+0000
+```
+### Is power of 2
+```Swift
+func isPowerOfTwo(_ x: UInt8) -> Bool {
+  x & (x - 1) == 0
+}
+```
+steps:
+```
+x = 1000
+x - 1 = 0111
+
+1000 &
+0111
+---------
+0000
+```
