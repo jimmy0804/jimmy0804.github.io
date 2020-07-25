@@ -56,19 +56,46 @@ Each shift is a divide by 2 with round towards negative infinity
 
 ## Basics
 ### Set bit
+Set a bit to 1 at position
 ```Swift
 func setBit(_ x: UInt8, _ position: UInt8) -> UInt8 {
   let mask = 1 << position
   return x | mask
 }  
 ```
+Steps:
 ```
 x = 0000 0110
 position = 0000 0101
 mask = 0000 0001 << 0000 0101 = 0010 0000
+
 x | mask = 
 0000 0110 |
 0010 0000
 ---------
 0010 0110
 ```
+
+### Clear Bit
+Clear a bit to 0 at position
+```Swift
+func clearBit(_ x: UInt8, _ position: UInt8) -> UInt8 {
+  let mask = 1 << position
+  return x & ~mask
+}
+```
+steps:
+```
+x = 0010 0110
+position = 0000 0101
+mask = 0000 0001 << 0000 0101 = 0010 0000
+~mask = 1101 1111
+
+x & ~mask = 
+0010 0110 &
+1101 1111
+---------
+0000 0110
+```
+
+### Check is power of 2
